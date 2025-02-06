@@ -1,11 +1,12 @@
 import { NextFunction, Request, Response } from "express";
+import { JwtAdapter } from "../../config";
 
 export class AuthMiddleware {
-  static validateJWT = (
+  static validateJWT = async (
     req: Request,
     res: Response,
     next: NextFunction
-  ): void => {
+  ) => {
     const authorization = req.header("Authorization");
 
     if (!authorization) {
@@ -18,18 +19,18 @@ export class AuthMiddleware {
       return;
     }
 
-    const token = authorization.split(" ").at(1) || ""; // Corregido split(" ")
+    const token = authorization.split(" ").at(1) || "";
 
     try {
-      // Ejemplo de verificación con JWT
-      // const payload = jwt.verify(token, 'your-secret-key');
-      // req.body.user = payload;
-      req.body.token = token;
+      // Verificación con JWT
+      const payload = await JwtAdapter.validateToken(token);
+      if (!payload) return res.status(401).json({ error: "Invalid token" });
+
+      req.body.payload = payload;
       next();
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: "Internal server error" });
-      return;
     }
   };
 }
