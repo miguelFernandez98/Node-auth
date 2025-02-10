@@ -4,6 +4,7 @@ import { UseMapper } from "../mappers/user.mapper";
 import {
   AuthDatasource,
   CustomError,
+  LoginUserDto,
   RegisterUserDto,
   UserEntity,
 } from "../../domain";
@@ -14,8 +15,24 @@ type CompareFunction = (password: string, hashed: string) => boolean;
 export class AuthDatasourceImpl implements AuthDatasource {
   constructor(
     private readonly hashPassword: HashFunction = BcryptAdapter.hash,
-    private readonly compareFunction: CompareFunction = BcryptAdapter.compare
+    private readonly comparePassword: CompareFunction = BcryptAdapter.compare
   ) {}
+
+  async login(loginUserDto: LoginUserDto): Promise<UserEntity> {
+    const { email, password } = loginUserDto;
+    try {
+      const user = await UserModel.findOne({ email });
+      if (!user) throw CustomError.badRequest("User does not exist");
+
+      const isMatching = this.comparePassword(password, user.password);
+      if (!isMatching) throw CustomError.badRequest("Invalid password");
+
+      return UseMapper.userEntityFromObject(user);
+    } catch (error) {
+      console.log(error);
+      throw CustomError.internalServerError();
+    }
+  }
 
   async register(registerUserDto: RegisterUserDto): Promise<UserEntity> {
     const { name, email, password } = registerUserDto;
