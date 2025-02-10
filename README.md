@@ -43,6 +43,8 @@ docker-compose up -d  # Ejecutar desde la raíz del proyecto
 # 3. Instalar dependencias
 npm install
 
+# 4. Configurar las variables de entorno usando de base el .env.template 
+
 # 4. Ejecutar en desarrollo (con ts-node)
 npm run dev
 ```
