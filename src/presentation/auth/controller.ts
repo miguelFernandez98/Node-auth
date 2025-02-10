@@ -25,9 +25,7 @@ export class AuthController {
       .then(async (user) =>
         res.json({
           user,
-          token: await JwtAdapter.generateToken({
-            payload: { email: user.id },
-          }),
+          token: await JwtAdapter.generateToken({ id: user.id }),
         })
       )
       .catch((error) => this.handleError(error, res));
