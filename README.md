@@ -45,6 +45,6 @@ npm install
 
 # 4. Configurar las variables de entorno usando de base el .env.template 
 
-# 4. Ejecutar en desarrollo (con ts-node)
+# 5. Ejecutar en desarrollo (con ts-node)
 npm run dev
 ```
