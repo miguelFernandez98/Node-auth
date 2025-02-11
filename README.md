@@ -37,11 +37,11 @@ Este repositorio nace como parte de un proceso de aprendizaje activo, enfocado e
 # 1. Clonar el repositorio
 git clone https://github.com/[tu-usuario]/node-ath.git
 
-# 2. Levantar la base de datos (MongoDB) con Docker Compose
-docker-compose up -d  # Ejecutar desde la raíz del proyecto
-
-# 3. Instalar dependencias
+# 2. Instalar dependencias
 npm install
+
+# 3. Levantar la base de datos (MongoDB) con Docker Compose
+docker-compose up -d  # Ejecutar desde la raíz del proyecto
 
 # 4. Configurar las variables de entorno usando de base el .env.template 
 
