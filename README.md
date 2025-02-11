@@ -1,4 +1,4 @@
-# Node-ath 🚀
+# Node-auth 🚀
 
 **Aplicación de estudio para backend con Node.js, TypeScript y MongoDB**
 
