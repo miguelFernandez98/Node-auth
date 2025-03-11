@@ -4,7 +4,7 @@
 
 ## 📖 Descripción
 
-**Node-ath** es un proyecto desarrollado con fines educativos, diseñado para explorar y fortalecer conocimientos en el desarrollo backend moderno. Su objetivo principal es servir como entorno práctico para implementar las siguientes tecnologías:
+**Node-auth** es un proyecto desarrollado con fines educativos, diseñado para explorar y fortalecer conocimientos en el desarrollo backend moderno. Su objetivo principal es servir como entorno práctico para implementar las siguientes tecnologías:
 
 - **Node.js**: Como entorno de ejecución base.
 - **TypeScript**: Para aprovechar la tipificación estática y mejorar la escalabilidad del código.
